@@ -233,11 +233,11 @@ class ChancaSubversivo(NPC):
 
 class GeneralChanca(NPC):
     def __init__(self, game, path='resources/sprites/npc/GeneralChanca/0.png', pos=(10.5, 6.5),
-                 scale=0.85, shift=0.27, animation_time=150):
+                 scale=0.85, shift=0.27, animation_time=200):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 6
-        self.health = 150
+        self.health = 100
         self.attack_damage = 10
         self.speed = 0.050
         self.accuracy = 0.40
@@ -292,11 +292,11 @@ class GeneralEspanol1(NPC):
         self.shot_volume = 0.2
 class GeneralEspanol2(NPC):
     def __init__(self, game, path='resources/sprites/npc/GeneralEspanol2/0.png', pos=(11.5, 6.0),
-                 scale=0.85, shift=0.04, animation_time=220):
+                 scale=0.85, shift=0.04, animation_time=240):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 10
-        self.health = 500
+        self.health = 300
         self.attack_damage = 15
         self.speed = 0.055
         self.accuracy = 0.30
@@ -308,11 +308,11 @@ class GeneralEspanol2(NPC):
 
 class GeneralEspanol3(NPC):
     def __init__(self, game, path='resources/sprites/npc/GeneralEspanol3/0.png', pos=(11.5, 6.0),
-                 scale=0.85, shift=0.04, animation_time=220):
+                 scale=0.85, shift=0.04, animation_time=260):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 12
-        self.health = 600
+        self.health = 400
         self.attack_damage = 20
         self.speed = 0.055
         self.accuracy = 0.35
