@@ -263,7 +263,7 @@ class SoldadoEspanolHacha(NPC):
 
 class SoldadoEspanolBallesta(NPC):
     def __init__(self, game, path='resources/sprites/npc/SoldadoEspanolBallesta/0.png', pos=(10.5, 6.5),
-                 scale=0.7, shift=0.27, animation_time=150):
+                 scale=0.7, shift=0.27, animation_time=180):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = randint(3, 6)
@@ -277,12 +277,12 @@ class SoldadoEspanolBallesta(NPC):
         self.shot_volume = 0.2
 
 class GeneralEspanol1(NPC):
-    def __init__(self, game, path='resources/sprites/npc/GeneralEspanol1/0.png', pos=(11.5, 6.0),
-                 scale=0.85, shift=0.04, animation_time=220):
+    def __init__(self, game, path='resources/sprites/npc/GeneralEspanol1/0.png', pos=(10.5, 6.5),
+                 scale=0.85, shift=0.27, animation_time=200):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 8
-        self.health = 250
+        self.health = 300
         self.attack_damage = 15
         self.speed = 0.045
         self.accuracy = 0.35
@@ -291,28 +291,28 @@ class GeneralEspanol1(NPC):
         self.npc_shot_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_attack3.wav')
         self.shot_volume = 0.2
 class GeneralEspanol2(NPC):
-    def __init__(self, game, path='resources/sprites/npc/GeneralEspanol2/0.png', pos=(11.5, 6.0),
-                 scale=0.85, shift=0.04, animation_time=240):
+    def __init__(self, game, path='resources/sprites/npc/GeneralEspanol2/0.png', pos=(10.5, 6.5),
+                 scale=0.85, shift=0.27, animation_time=220):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 10
-        self.health = 300
+        self.health = 400
         self.attack_damage = 15
         self.speed = 0.055
         self.accuracy = 0.30
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')
-        self.npc_shot_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_attack2.wav')
+        self.npc_shot_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_attack3.wav')
         self.shot_volume = 0.2
 
 
 class GeneralEspanol3(NPC):
-    def __init__(self, game, path='resources/sprites/npc/GeneralEspanol3/0.png', pos=(11.5, 6.0),
-                 scale=0.85, shift=0.04, animation_time=260):
+    def __init__(self, game, path='resources/sprites/npc/GeneralEspanol3/0.png', pos=(10.5, 6.5),
+                 scale=0.85, shift=0.27, animation_time=240):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 12
-        self.health = 400
+        self.health = 600
         self.attack_damage = 20
         self.speed = 0.055
         self.accuracy = 0.35
