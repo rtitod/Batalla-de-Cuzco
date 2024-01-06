@@ -80,6 +80,8 @@ class Level:
         self.boss_max_cols = 4 / 9
         self.boss_min_rows = 7 / 9
         self.boss_max_rows = 9 / 9
+        self.win_image = self.get_texture('resources/textures/win.png', RES)
+        self.theme_sound = pygame.mixer.music.load(self.sound_path + 'theme.mp3')
 
     def new_game(self):
         print("Iniciando un nuevo juego")
@@ -99,7 +101,6 @@ class Level:
                              for i in range(11)]
         self.digits = dict(zip(map(str, range(11)), self.digit_images))
         self.game_over_image = self.get_texture('resources/textures/game_over.png', RES)
-        self.win_image = self.get_texture('resources/textures/win.png', RES)
         self.ray_casting_result = []
         self.objects_to_render = []
         self.textures = self.wall_textures
@@ -107,8 +108,8 @@ class Level:
         self.sprite_list = []
         self.npc_list = []
         self.npc_sprite_path = 'resources/sprites/npc/'
-        self.static_sprite_path = 'resources/sprites/static_sprites/'
-        self.anim_sprite_path = 'resources/sprites/animated_sprites/'
+        self.static_sprite_path = 'resources/sprites/sprite_estatico/'
+        self.anim_sprite_path = 'resources/sprites/sprites_animados/'
         add_sprite = self.add_sprite
         add_npc = self.add_npc
         self.npc_positions_object = {}
@@ -116,28 +117,7 @@ class Level:
         self.restricted_area = {(i, j) for i in range(10) for j in range(10)}
         self.spawn_npc()
         # sprite map
-        add_sprite(AnimatedSprite(self))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(1.5, 1.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(1.5, 7.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(5.5, 3.25)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(5.5, 4.75)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(7.5, 2.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(7.5, 5.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(14.5, 1.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(14.5, 4.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(14.5, 5.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(14.5, 7.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(12.5, 7.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(9.5, 7.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(14.5, 12.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(9.5, 20.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(10.5, 20.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(3.5, 14.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(3.5, 18.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(14.5, 24.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(14.5, 30.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(1.5, 30.5)))
-        add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(1.5, 24.5)))
+        self.add_candela()
 
         self.map = self.mini_map
         self.ways = [-1, 0], [0, -1], [1, 0], [0, 1], [-1, -1], [1, -1], [1, 1], [-1, 1]
@@ -145,9 +125,32 @@ class Level:
         self.get_graph()
         pygame.mixer.init()
         self.player_pain_sound = pygame.mixer.Sound(self.sound_path + 'player_pain.wav')
-        self.theme_sound = pygame.mixer.music.load(self.sound_path + 'theme.mp3')
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
+
+    def add_candela(self):
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(11.5, 3.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(1.5, 1.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(1.5, 7.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(5.5, 3.25)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(5.5, 4.75)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(7.5, 2.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(7.5, 5.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(14.5, 1.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(14.5, 4.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(14.5, 5.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(14.5, 7.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(12.5, 7.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(9.5, 7.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(14.5, 12.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(9.5, 20.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(10.5, 20.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(3.5, 14.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'red_light/0.png', pos=(3.5, 18.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(14.5, 24.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(14.5, 30.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(1.5, 30.5)))
+        self.add_sprite(AnimatedSprite(self, path=self.anim_sprite_path + 'green_light/0.png', pos=(1.5, 24.5)))
 
     def update(self):
         self.player.update()
@@ -330,6 +333,9 @@ class Level:
         self.draw_player_health()
 
     def win_Renderer(self):
+        self.screen.blit(self.win_image, (0, 0))
+
+    def history_Renderer(self):
         self.screen.blit(self.win_image, (0, 0))
 
     def game_over_Renderer(self):

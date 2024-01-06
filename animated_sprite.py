@@ -6,7 +6,7 @@ from sprite_object import *
 
 # hereda de Spriteobject
 class AnimatedSprite(SpriteObject):
-    def __init__(self, game, path='resources/sprites/animated_sprites/green_light/0.png',
+    def __init__(self, game, path='resources/sprites/sprites_animados/green_light/0.png',
                  pos=(11.5, 3.5), scale=0.8, shift=0.16, animation_time=120):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift)

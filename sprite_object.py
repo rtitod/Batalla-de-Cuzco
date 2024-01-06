@@ -2,7 +2,7 @@ import pygame
 from vars import *
 
 class SpriteObject:
-    def __init__(self, game, path='resources/sprites/static_sprites/candlebra.png',
+    def __init__(self, game, path='resources/sprites/sprite_estatico/candlebra.png',
                  pos=(10.5, 3.5), scale=0.7, shift=0.27):
         # Inicialización de la clase SpriteObject
         self.game = game
