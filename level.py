@@ -14,6 +14,7 @@ from weapon import Sling
 
 class Level:
     def __init__(self, game):
+        self.history_image = None
         self.health_recovery_delay = None
         self.player_pos = None
         self.boss_max_rows = None
@@ -81,6 +82,7 @@ class Level:
         self.boss_min_rows = 7 / 9
         self.boss_max_rows = 9 / 9
         self.win_image = self.get_texture('resources/textures/win.png', RES)
+        self.history_image = self.get_texture('resources/textures/history.png', RES)
         self.theme_sound = pygame.mixer.music.load(self.sound_path + 'theme.mp3')
 
     def new_game(self):
@@ -336,7 +338,7 @@ class Level:
         self.screen.blit(self.win_image, (0, 0))
 
     def history_Renderer(self):
-        self.screen.blit(self.win_image, (0, 0))
+        self.screen.blit(self.history_image, (0, 0))
 
     def game_over_Renderer(self):
         self.screen.blit(self.game_over_image, (0, 0))
@@ -407,6 +409,9 @@ class Level:
             self.win_Renderer()
             pygame.display.flip()
             pygame.time.delay(1500)
+            self.history_Renderer()
+            pygame.display.flip()
+            pygame.time.delay(3000)
             self.next_level()
 
     def next_level(self):

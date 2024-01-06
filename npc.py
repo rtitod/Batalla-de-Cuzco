@@ -42,7 +42,8 @@ class NPC(AnimatedSprite):
 
     def check_wall(self, x, y):
         # Verifica si hay una pared en la posición dada
-        return (x, y) not in self.game.world_map
+        if (x, y) not in self.game.world_map :
+            return x, y
 
     def check_wall_collision(self, dx, dy):
         # Verifica la colisión con las paredes después del movimiento
@@ -107,6 +108,7 @@ class NPC(AnimatedSprite):
             self.check_hit_in_npc()
 
             if self.pain:
+                pass
                 self.animate_pain()
 
             elif self.ray_cast_value:
@@ -157,10 +159,20 @@ class NPC(AnimatedSprite):
             y_hor = y_map - 1e-6
             dy = -1
 
-        depth_hor = (y_hor - oy) / sin_a
+        if sin_a != 0:
+            depth_hor = (y_hor - oy) / sin_a
+        else:
+            # Manejar el caso cuando sin_a es cero, por ejemplo, asignando un valor predeterminado .
+            depth_hor = 0
+
         x_hor = ox + depth_hor * cos_a
 
-        delta_depth = dy / sin_a
+        if sin_a != 0:
+            delta_depth = dy / sin_a
+        else:
+            # Manejar el caso cuando sin_a es cero, por ejemplo, asignando un valor predeterminado .
+            delta_depth = 0
+
         dx = delta_depth * cos_a
 
         for i in range(MAX_DEPTH):
@@ -284,7 +296,7 @@ class GeneralEspanol1(NPC):
         self.attack_dist = 8
         self.health = 200
         self.attack_damage = 10
-        self.speed = 0.045
+        self.speed = 0.050
         self.accuracy = 0.35
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')
@@ -295,10 +307,10 @@ class GeneralEspanol2(NPC):
                  scale=0.7, shift=0.27, animation_time=220):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
-        self.attack_dist = 10
+        self.attack_dist = 9
         self.health = 500
         self.attack_damage = 15
-        self.speed = 0.055
+        self.speed = 0.050
         self.accuracy = 0.30
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')
@@ -311,10 +323,10 @@ class GeneralEspanol3(NPC):
                  scale=0.7, shift=0.27, animation_time=240):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
-        self.attack_dist = 12
+        self.attack_dist = 10
         self.health = 600
         self.attack_damage = 15
-        self.speed = 0.055
+        self.speed = 0.050
         self.accuracy = 0.35
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')

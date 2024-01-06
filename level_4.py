@@ -23,6 +23,7 @@ class Level_4(Level):
         self.boss_min_rows = 4 / 5
         self.boss_max_rows = 5 / 5
         self.win_image = self.get_texture('resources/textures/win.png', RES)
+        self.history_image = self.get_texture('resources/textures/history.png', RES)
         self.theme_sound = pygame.mixer.music.load(self.sound_path + 'theme.mp3')
 
     def load_wall_textures(self):
