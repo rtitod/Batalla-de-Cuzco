@@ -18,5 +18,5 @@ class game:
 
 if __name__ == '__main__':
     game = game()
-    start = Level_1(game)
+    start = Level_3(game)
     start.run()

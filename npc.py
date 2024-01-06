@@ -233,7 +233,7 @@ class ChancaSubversivo(NPC):
 
 class GeneralChanca(NPC):
     def __init__(self, game, path='resources/sprites/npc/GeneralChanca/0.png', pos=(10.5, 6.5),
-                 scale=0.7, shift=0.27, animation_time=200):
+                 scale=0.7, shift=0.27, animation_time=180):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 6

@@ -9,7 +9,7 @@ class Level_3(Level):
 
     def override_player_pos(self):
         self.player_pos = 2, 2
-        self.health_recovery_delay = 700
+        self.health_recovery_delay = 800
 
     def override_vars(self):
         self.mini_map = mini_map3
