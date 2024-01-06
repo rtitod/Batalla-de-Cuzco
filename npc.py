@@ -233,7 +233,7 @@ class ChancaSubversivo(NPC):
 
 class GeneralChanca(NPC):
     def __init__(self, game, path='resources/sprites/npc/GeneralChanca/0.png', pos=(10.5, 6.5),
-                 scale=0.85, shift=0.27, animation_time=200):
+                 scale=0.7, shift=0.27, animation_time=200):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 6
@@ -278,12 +278,12 @@ class SoldadoEspanolBallesta(NPC):
 
 class GeneralEspanol1(NPC):
     def __init__(self, game, path='resources/sprites/npc/GeneralEspanol1/0.png', pos=(10.5, 6.5),
-                 scale=0.85, shift=0.27, animation_time=200):
+                 scale=0.7, shift=0.27, animation_time=200):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 8
-        self.health = 300
-        self.attack_damage = 15
+        self.health = 200
+        self.attack_damage = 10
         self.speed = 0.045
         self.accuracy = 0.35
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
@@ -292,11 +292,11 @@ class GeneralEspanol1(NPC):
         self.shot_volume = 0.2
 class GeneralEspanol2(NPC):
     def __init__(self, game, path='resources/sprites/npc/GeneralEspanol2/0.png', pos=(10.5, 6.5),
-                 scale=0.85, shift=0.27, animation_time=220):
+                 scale=0.7, shift=0.27, animation_time=220):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 10
-        self.health = 400
+        self.health = 500
         self.attack_damage = 15
         self.speed = 0.055
         self.accuracy = 0.30
@@ -308,12 +308,12 @@ class GeneralEspanol2(NPC):
 
 class GeneralEspanol3(NPC):
     def __init__(self, game, path='resources/sprites/npc/GeneralEspanol3/0.png', pos=(10.5, 6.5),
-                 scale=0.85, shift=0.27, animation_time=240):
+                 scale=0.7, shift=0.27, animation_time=240):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 12
         self.health = 600
-        self.attack_damage = 20
+        self.attack_damage = 15
         self.speed = 0.055
         self.accuracy = 0.35
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
