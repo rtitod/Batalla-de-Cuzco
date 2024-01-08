@@ -1,3 +1,4 @@
+from harmless_npc import *
 from level import *
 from level_2 import Level_2
 from weapon import *
@@ -6,6 +7,7 @@ from weapon import *
 class Level_1(Level):
     def __init__(self, game):
         super().__init__(game)
+        self.harmless_quantities = None
         self.game = game
 
     def override_player_pos(self):
@@ -16,7 +18,7 @@ class Level_1(Level):
         self.mini_map = mini_map
         self.npc_types = [ChancaSubversivo]
         self.npc_boss_types = [GeneralChanca]
-        self.quantities = [8]
+        self.quantities = [10]
         self.boss_quantities = [1]
         self.weapon = Sling(self)
         self.boss_min_cols = 1 / 9

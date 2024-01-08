@@ -108,7 +108,6 @@ class NPC(AnimatedSprite):
             self.check_hit_in_npc()
 
             if self.pain:
-                pass
                 self.animate_pain()
 
             elif self.ray_cast_value:
@@ -236,7 +235,7 @@ class ChancaSubversivo(NPC):
         self.attack_dist = 1.25
         self.health = 100
         self.attack_damage = 5
-        self.speed = 0.040
+        self.speed = 0.035
         self.accuracy = 0.40
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')
@@ -251,7 +250,7 @@ class GeneralChanca(NPC):
         self.attack_dist = 6
         self.health = 100
         self.attack_damage = 10
-        self.speed = 0.050
+        self.speed = 0.045
         self.accuracy = 0.40
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')

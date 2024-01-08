@@ -2,6 +2,7 @@ import math
 import pygame
 import sys
 
+from harmless_npc import *
 from vars import *
 from collections import deque
 from functools import lru_cache
@@ -14,6 +15,8 @@ from weapon import Sling
 
 class Level:
     def __init__(self, game):
+        self.harmless_quantities = None
+        self.npc_harmless_types = None
         self.history_image = None
         self.health_recovery_delay = None
         self.player_pos = None
@@ -76,6 +79,8 @@ class Level:
         self.npc_boss_types = [GeneralChanca]
         self.quantities = [8]
         self.boss_quantities = [1]
+        self.npc_harmless_types = None
+        self.harmless_quantities = [0]
         self.weapon = Sling(self)
         self.boss_min_cols = 1 / 9
         self.boss_max_cols = 4 / 9
@@ -118,6 +123,7 @@ class Level:
         # spawn npc
         self.restricted_area = {(i, j) for i in range(10) for j in range(10)}
         self.spawn_npc()
+        self.spawn_harmless_npc()
         # sprite map
         self.add_candela()
 
@@ -404,14 +410,26 @@ class Level:
                               randrange(int(self.boss_min_rows * self.rows), int(self.boss_max_rows * self.rows)))
             self.add_npc(npc(self, pos=(x + 0.5, y + 0.5)))
 
+    def spawn_harmless_npc(self):
+        if self.npc_harmless_types is not None:
+            all_npcs = []
+            for npc_type, quantity in zip(self.npc_harmless_types, self.harmless_quantities):
+                npcs_of_type = [npc_type for _ in range(quantity)]
+                all_npcs.extend(npcs_of_type)
+            for npc in all_npcs:
+                pos = x, y = randrange(self.cols), randrange(self.rows)
+                while (pos in self.world_map) or (pos in self.restricted_area):
+                    pos = x, y = randrange(self.cols), randrange(self.rows)
+                self.add_npc(npc(self, pos=(x + 0.5, y + 0.5)))
+
     def check_win(self):
         if not len(self.npc_positions_object):
             self.win_Renderer()
             pygame.display.flip()
-            pygame.time.delay(1500)
+            pygame.time.delay(2000)
             self.history_Renderer()
             pygame.display.flip()
-            pygame.time.delay(3000)
+            pygame.time.delay(6000)
             self.next_level()
 
     def next_level(self):

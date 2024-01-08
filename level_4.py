@@ -17,13 +17,15 @@ class Level_4(Level):
         self.npc_boss_types = [GeneralEspanol3]
         self.quantities = [6, 14]
         self.boss_quantities = [1]
+        #self.npc_harmless_types = [Stars]
+        #self.harmless_quantities = [44]
         self.weapon = Shotgun(self)
         self.boss_min_cols = 4 / 5
         self.boss_max_cols = 5 / 5
         self.boss_min_rows = 4 / 5
         self.boss_max_rows = 5 / 5
-        self.win_image = self.get_texture('resources/textures/win.png', RES)
-        self.history_image = self.get_texture('resources/textures/history.png', RES)
+        self.win_image = self.get_texture('resources/textures/winfinal.png', RES)
+        self.history_image = self.get_texture('resources/textures/history4.png', RES)
         self.theme_sound = pygame.mixer.music.load(self.sound_path + 'theme.mp3')
 
     def load_wall_textures(self):
