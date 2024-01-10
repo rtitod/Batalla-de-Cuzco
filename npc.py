@@ -293,7 +293,7 @@ class GeneralEspanol1(NPC):
         # Llamada al constructor de la clase base
         super().__init__(game, path, pos, scale, shift, animation_time)
         self.attack_dist = 8
-        self.health = 200
+        self.health = 150
         self.attack_damage = 10
         self.speed = 0.040
         self.accuracy = 0.35
