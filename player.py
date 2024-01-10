@@ -81,8 +81,8 @@ class Player:
             num_key_pressed += 1
             dx += -speed_sin
             dy += speed_cos
-        if keys[pygame.K_SPACE]:
-            self.health = PLAYER_MAX_HEALTH
+        #if keys[pygame.K_SPACE]:
+        #    self.health = PLAYER_MAX_HEALTH
 
         # corrección de movimiento diagonal
         if num_key_pressed:

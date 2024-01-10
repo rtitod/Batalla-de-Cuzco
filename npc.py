@@ -235,7 +235,7 @@ class ChancaSubversivo(NPC):
         self.attack_dist = 1.25
         self.health = 100
         self.attack_damage = 5
-        self.speed = 0.035
+        self.speed = 0.025
         self.accuracy = 0.40
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')
@@ -250,7 +250,7 @@ class GeneralChanca(NPC):
         self.attack_dist = 6
         self.health = 100
         self.attack_damage = 10
-        self.speed = 0.045
+        self.speed = 0.030
         self.accuracy = 0.40
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')
@@ -265,7 +265,7 @@ class SoldadoEspanolHacha(NPC):
         self.attack_dist = 1.25
         self.health = 100
         self.attack_damage = 10
-        self.speed = 0.035
+        self.speed = 0.030
         self.accuracy = 0.40
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')
@@ -295,7 +295,7 @@ class GeneralEspanol1(NPC):
         self.attack_dist = 8
         self.health = 200
         self.attack_damage = 10
-        self.speed = 0.050
+        self.speed = 0.040
         self.accuracy = 0.35
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')
@@ -309,7 +309,7 @@ class GeneralEspanol2(NPC):
         self.attack_dist = 9
         self.health = 500
         self.attack_damage = 15
-        self.speed = 0.050
+        self.speed = 0.045
         self.accuracy = 0.30
         self.npc_pain_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_pain.wav')
         self.npc_death_sound = pygame.mixer.Sound(self.game.sound_path + 'npc_death.wav')
